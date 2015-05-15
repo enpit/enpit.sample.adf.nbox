@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="enpit.sample.adf.model.service.HRAppModule">
+      <AppModuleConfig name="HRAppModuleLocal" ApplicationName="enpit.sample.adf.model.service.HRAppModule" DeployPlatform="LOCAL" jbo.project="enpit.sample.adf.model.enpitSampleNboxModel">
+         <Security AppModuleJndiName="enpit.sample.adf.model.service.HRAppModule"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/hr@soabpmvmPS5DS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="HRAppModuleShared" ApplicationName="enpit.sample.adf.model.service.HRAppModule" DeployPlatform="LOCAL" jbo.project="enpit.sample.adf.model.enpitSampleNboxModel">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="enpit.sample.adf.model.service.HRAppModule"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/hr@soabpmvmPS5DS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>
