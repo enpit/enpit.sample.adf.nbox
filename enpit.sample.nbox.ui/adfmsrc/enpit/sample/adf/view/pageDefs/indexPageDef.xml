@@ -23,6 +23,7 @@
           <Item Value="Salary"/>
           <Item Value="StateProvince"/>
           <Item Value="JobTitle"/>
+          <Item Value="CountryDiscriminator"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

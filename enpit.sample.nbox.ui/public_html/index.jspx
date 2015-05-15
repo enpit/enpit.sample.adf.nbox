@@ -6,46 +6,61 @@
           xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
   <jsp:directive.page contentType="text/html;charset=UTF-8"/>
   <f:view>
-    <af:document id="d1">
+    <af:document id="d1" title="enpit NBox Sample">
       <af:messages id="m1"/>
       <af:form id="f1">
         <af:pageTemplate viewId="/oracle/templates/threeColumnTemplate.jspx"
                          id="pt1">
           <f:facet name="center">
-            <af:panelHeader text="enpit: NBox Sample" id="pb1">
+            <af:panelHeader text="Salary distribution across Countries" id="pb1">
               <f:facet name="toolbar"/>
               <dvt:nBox id="nb1" var="ent" rowsTitle="Country"
                         value="#{bindings.EmpDetailsView1.collectionModel}"
                         columnsTitle="Salary Level">
                 <f:facet name="rows">
-                  <af:group id="g1">
-                    <dvt:nBoxRow id="nbr1" value="US"
-                                 label="United States of America"/>
+                  <af:group id="g1">        
+                    <dvt:nBoxRow id="nbr3" value="OTHER"
+                                 label="Rest of the World"/>                    
                     <dvt:nBoxRow id="nbr2" value="UK"
-                                 label="United Kingdom"/>
-                    <dvt:nBoxRow id="nbr3" value="DE" label="Germany"/>
-                    <dvt:nBoxRow id="nbr4" value="CA" label="Canada"/>
+                                 label="United Kingdom"/>                    
+                    <dvt:nBoxRow id="nbr1" value="US"
+                                 label="United States of America"/>                    
                   </af:group>
                 </f:facet>
                 <f:facet name="columns">
                   <af:group id="g2">
-                    <dvt:nBoxColumn id="nbc1" value="low" label="Low"/>
-                    <dvt:nBoxColumn id="nbc2" value="middle" label="Middle"/>
-                    <dvt:nBoxColumn id="nbc3" value="upper" label="Upper"/>
+                    <dvt:nBoxColumn id="nbc1" value="lower"
+                                    label="Lower (max 5,000)"/>
+                    <dvt:nBoxColumn id="nbc2" value="middle"
+                                    label="Middle (5,000 - 10,000)"/>
+                    <dvt:nBoxColumn id="nbc3" value="upper"
+                                    label="Upper (min 10,000)"/>
                   </af:group>
                 </f:facet>
                 <dvt:nBoxNode id="nbn1" column="#{ent.SalaryLevel}"
                               secondaryLabel="#{ent.LastName}"
-                              label="#{ent.FirstName}" row="#{ent.CountryId}"
-                              shortDesc="Job Title: #{ent.JobTitle}&lt;br/>Salary: #{ent.Salary}&lt;br/>State: #{ent.StateProvince}"
+                              label="#{ent.FirstName}" row="#{ent.CountryDiscriminator}"
+                              shortDesc="Job Title: #{ent.JobTitle}&lt;br/>Salary: #{ent.Salary}&lt;br/>Country: #{ent.CountryName} (#{ent.StateProvince})"
                               >
-                  <dvt:attributeGroups value="#{ent.DepartmentId}" type="color"
-                                       label="#{ent.DepartmentName}" id="ag1"/>
+                  <dvt:attributeGroups value="#{ent.JobTitle}" type="color"
+                                       label="#{ent.JobTitle}" id="ag1"
+                                       sectionLabel="Job Title"/>
+                  <f:facet name="indicator">
+                    <dvt:marker id="m2">
+                      <dvt:attributeGroups value="#{ent.DepartmentId}"
+                                           type="shape"
+                                           label="#{ent.DepartmentName}"
+                                           id="ag2" sectionLabel="Department"/>
+                    </dvt:marker>
+                  </f:facet>
+                  <f:facet name="icon"/>
                 </dvt:nBoxNode>
               </dvt:nBox>
             </af:panelHeader>
           </f:facet>
-          <f:facet name="header"/>
+          <f:facet name="header">
+            <af:outputText value="ADF 11.1.1.9 DVT NBox Sample by enpit" id="ot1"/>
+          </f:facet>
           <f:facet name="branding"/>
           <f:facet name="copyright"/>
           <f:facet name="status"/>

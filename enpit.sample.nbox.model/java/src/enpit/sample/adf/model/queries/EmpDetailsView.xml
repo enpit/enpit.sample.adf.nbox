@@ -309,6 +309,18 @@ FROM EMP_DETAILS_VIEW EmpDetailsView]]>
     <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[Salary < 5000.0 ? 'lower' : (Salary < 10000.0 ? 'middle' : 'upper')]]></TransientExpression>
   </ViewAttribute>
+  <ViewAttribute
+    Name="CountryDiscriminator"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[CountryId in ['US', 'UK']?CountryId:'OTHER']]></TransientExpression>
+  </ViewAttribute>
   <AttrArray Name="KeyAttributes">
     <Item Value="RowID"/>
   </AttrArray>
