@@ -1,2 +1,4 @@
 enpit.sample.nbox.model/target/*
 enpit.sample.nbox.ui/target/*
+enpit.sample.nbox.ui/public_html/WEB-INF/temp/*
+
